@@ -107,6 +107,10 @@ export default defineConfig({
       slowMo: 100,
       timeout: 30 * 1000,
       // executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      logger: {
+        isEnabled: (name, severity) => name === 'browser',
+        log: (name, severity, message, args) => console.log(`${name} ${message}`)
+      }
     },
     contextOptions: {
       acceptDownloads: true,
