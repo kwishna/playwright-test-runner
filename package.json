@@ -1,16 +1,40 @@
 {
   "name": "playwright-test-runner",
   "version": "1.0.0",
-  "description": "",
+  "description": "playwright automation tests",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "format": "prettier --write \"**/*.{ts,tsx,css,html}\" ",
+    "eslint-fix": "eslint ./ --ext .js,.ts,.tsx --fix",
+    "eslint-init": "eslint --init",
+    "test": "npx playwright test --headed",
+    "test:file": "npx playwright test my.spec.ts",
+    "test:grep": "npx playwright test --grep \"login\"",
+    "test:project": "npx playwright test --project \"chromium\"",
+    "test:workers": "npx playwright test --workers 4",
+    "test:list": "npx playwright test --list",
+    "test:ui": "npx playwright test --ui",
+    "show-report": "npx playwright show-report",
+    "download:browsers": "cross-env PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npx playwright install"
+  },
+  "keywords": [
+    "playwright",
+    "testing",
+    "automation"
+  ],
+  "author": "Krishna Kumar Singh",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.37.1"
   },
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "@types/node": "^20.5.9",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.49.0",
+    "moment": "^2.29.4",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1"
   }
 }

@@ -1,48 +1,182 @@
 import { defineConfig, devices } from '@playwright/test';
-import {config} from "dotenv"
+import { config } from "dotenv";
+import moment from "moment";
+import os from "os";
+import { resolve } from "path"
+config();
 
-require('dotenv').config();
-
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
+  name: "Automated Playwright Tests",
+
+  globalSetup: resolve("./global-setup.ts"),
+  globalTeardown: resolve("./global-teardown.ts"),
+
+  globalTimeout: process.env.CI ? 60 * 60 * 1000 : undefined,
+  timeout: process.env.CI ? 5 * 60 * 1000 : undefined,
+  reportSlowTests: {
+    max: 5,
+    threshold: 300
+  },
+
+  preserveOutput: "always",
+  // Look for test files in the "tests" directory, relative to this configuration file.̥
   testDir: './tests',
+  testIgnore: '**\/test-assets/**',
+  testMatch: `**\/*.@(spec|test).?(c|m)[jt]s?(x)`,
+
+  snapshotDir: './snapshots',
+  updateSnapshots: "missing",
+  ignoreSnapshots: false,
+  outputDir: "./output",
+
   /* Run tests in files in parallel */
   fullyParallel: true,
+  workers: process.env.CI ? 5 : undefined,
+
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+  reporter: [
+    ['dot'],
+    ['line'],
+    ['list'],
+    ['html', { outputFile: 'report.html', outputFolder: './test-results' }],
+    ['junit', { outputFile: 'junit.xml', outputFolder: './test-results' }],
+    ['json', { outputFile: 'test-results.json', outputFolder: './test-results' }]
+  ],
+  quiet: false,
+  expect: {
+    timeout: 10000,
+    toHaveScreenshot: {
+      animations: 'allow',
+      maxDiffPixels: 10,
+    },
+    toMatchSnapshot: {
+      maxDiffPixels: 10,
+    },
+  },
+  use: {
+    // browserName: 'chromium',
+    baseURL: 'https://google.co.in/',
+    trace: 'retain-on-failure',
+    actionTimeout: 30 * 1000,
+    navigationTimeout: 30 * 10000,
+    bypassCSP: false,
+    javaScriptEnabled: true,
+    headless: false,
+    // permissions: [
+      // 'downloads',
+      // 'geolocation',
+      // 'history',
+      // 'management',
+      // 'notifications',
+      // 'background',
+      // 'bookmarks',
+      // 'clipboardRead',
+      // 'clipboardWrite',
+      // 'storage',
+      // 'tabs'
+    // ],
+    screenshot: 'on',
+    video: "retain-on-failure",
+    viewport: {
+      width: 1920,
+      height: 1080
+    }, 
+
+    launchOptions: {
+      args: [
+        '--window-size=1080,1920',
+        '--window-position=-5,-5',
+        '--start-maximized',
+        `-user-data-dir=${resolve('./dir')}`,
+        // '--disable-extensions',
+        // '--incognito',
+        // '--disable-gpu',
+        '--disable-infobars',
+        // '--disable-notifications',
+        // '--disable-popup-blocking',
+        // '--disable-translate',
+        // '--no-sandbox',
+        // '--disable-web-security',
+        // '--disable-features=ClickToCall,PasswordExport,PasswordImport,GooglePasswordManager,FileSystemApi,SafetyTipUI,SaveCardMigration',
+        // '--disable-software-draw-without-gpu'
+      ],
+      downloadsPath: './downloads',
+      slowMo: 100,
+      timeout: 30 * 1000,
+      // executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    },
+    contextOptions: {
+      acceptDownloads: true,
+      locale: 'en-US',
+      // recordHar: {
+      //   path: resolve(`./output/HAR_${Date.now()}.zip`),
+      //   content: "embed",
+      //   mode: 'full'
+      // },
+      recordVideo: {
+        dir: './output/',
+        size: {
+          height: 1080,
+          width: 1920
+        }
+      },
+      screen: {
+        height: 1080,
+        width: 1920
+      },
+      strictSelectors: false,
+      timezoneId: 'America/New_York',
+      
+      geolocation: {
+        latitude: 40.367474,
+        longitude: -82.996216
+      }
+    },
+
+    // connectOptions: {
+    //   wsEndpoint: `wss://cdp.browserstack.com/playwright?caps=${encodeURIComponent(JSON.stringify({
+    //     osVersion: "13.0",
+    //     deviceName: "Samsung Galaxy S23", // "Samsung Galaxy S22 Ultra", "Google Pixel 7 Pro", "OnePlus 9", etc.
+    //     browserName: "chrome",
+    //     realMobile: "true",
+    //     name: "My android playwright test",
+    //     build: "playwright-build-1",
+    //     "browserstack.username": process.env.BROWSERSTACK_USERNAME || "<USERNAME>",
+    //     "browserstack.accessKey":
+    //       process.env.BROWSERSTACK_ACCESS_KEY || "<ACCESS_KEY>",
+    //     "browserstack.local": process.env.BROWSERSTACK_LOCAL || false,
+    //   }
+    //   ))}`
+    // }
+  },
+
+  metadata: {
+    "browserName": "chrome",
+    "time": moment().format('DD/MM/YYYY HH:mm:ss'),
+    "machine": os.machine(),
+    "platform": os.platform(),
+    "arch": os.arch()
   },
 
   /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  // projects: [
+  //   {
+  //     name: 'chromium',
+  //     use: { ...devices['Desktop Chrome'] },
+  //   },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+  //   {
+  //     name: 'firefox',
+  //     use: { ...devices['Desktop Firefox'] },
+  //   },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+  //   {
+  //     name: 'webkit',
+  //     use: { ...devices['Desktop Safari'] },
+  //   },
 
     /* Test against mobile viewports. */
     // {
@@ -63,7 +197,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  // ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {
@@ -71,4 +205,5 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+
 });
