@@ -1,6 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+// test.use({ locale: 'en-EN' }); // Applicable for entire tests in the file.
+test.describe.configure({ mode: 'parallel' });
+
 test('has title', async ({ page }) => {
+  // test.use({ locale: 'fr-FR' }); // Applicable for 
   await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.

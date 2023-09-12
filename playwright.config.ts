@@ -2,8 +2,10 @@ import { defineConfig, devices } from '@playwright/test';
 import { config } from "dotenv";
 import moment from "moment";
 import os from "os";
-import { resolve } from "path"
+import path, { resolve } from "path"
 config();
+
+export const STORAGE_STATE = path.join(__dirname, 'playwright/.auth/user.json');
 
 export default defineConfig({
   name: "Automated Playwright Tests",
@@ -39,9 +41,9 @@ export default defineConfig({
 
   reporter: [
     ['dot'],
-    ['line'],
+    ['line', { printSteps: true }],
     ['list'],
-    ['html', { outputFile: 'report.html', outputFolder: './test-results' }],
+    ['html', { outputFile: 'report.html', outputFolder: './test-results', open: false }],
     ['junit', { outputFile: 'junit.xml', outputFolder: './test-results' }],
     ['json', { outputFile: 'test-results.json', outputFolder: './test-results' }]
   ],
@@ -57,15 +59,16 @@ export default defineConfig({
     },
   },
   use: {
-    // browserName: 'chromium',
+    browserName: 'chromium',
+    channel: "chrome",
     baseURL: 'https://google.co.in/',
-    trace: 'retain-on-failure',
+    
     actionTimeout: 30 * 1000,
     navigationTimeout: 30 * 10000,
     bypassCSP: false,
     javaScriptEnabled: true,
     headless: false,
-    // permissions: [
+    permissions: ['geolocation'],
       // 'downloads',
       // 'geolocation',
       // 'history',
@@ -77,9 +80,10 @@ export default defineConfig({
       // 'clipboardWrite',
       // 'storage',
       // 'tabs'
-    // ],
-    screenshot: 'on',
+    screenshot: 'only-on-failure',
     video: "retain-on-failure",
+    trace: 'retain-on-failure',
+
     viewport: {
       width: 1920,
       height: 1080
@@ -166,7 +170,28 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  // projects: [
+  projects: [
+
+    {
+      name: 'setup',
+      testMatch: /set-up.spec\.ts/,
+    },
+    {
+      name: 'logged in chromium',
+      use: {
+      ...devices['Desktop Chrome'],
+      storageState: STORAGE_STATE
+      },
+      dependencies: ['setup'],
+      testMatch: '**/*.loggedin.spec.ts',
+      retries: 1
+    },
+    {
+      name: 'logged out chromium',
+      use: { ...devices['Desktop Chrome'] },
+      testIgnore: ['**/*loggedin.spec.ts']
+    },
+
   //   {
   //     name: 'chromium',
   //     use: { ...devices['Desktop Chrome'] },
@@ -201,7 +226,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  // ],
+  ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {
