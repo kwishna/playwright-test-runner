@@ -69,24 +69,23 @@ export default defineConfig({
     browserName: 'chromium',
     channel: "chrome",
     baseURL: 'https://google.co.in/',
-
     actionTimeout: 30 * 1000,
-    navigationTimeout: 30 * 10000,
+    navigationTimeout: 30 * 1000,
     bypassCSP: false,
     javaScriptEnabled: true,
     headless: false,
     permissions: ['geolocation'],
-    // 'downloads',
-    // 'geolocation',
-    // 'history',
-    // 'management',
-    // 'notifications',
-    // 'background',
-    // 'bookmarks',
-    // 'clipboardRead',
-    // 'clipboardWrite',
-    // 'storage',
-    // 'tabs'
+      // 'downloads',
+      // 'geolocation',
+      // 'history',
+      // 'management',
+      // 'notifications',
+      // 'background',
+      // 'bookmarks',
+      // 'clipboardRead',
+      // 'clipboardWrite',
+      // 'storage',
+      // 'tabs'
     screenshot: 'only-on-failure',
     video: "retain-on-failure",
     trace: 'retain-on-failure',
@@ -94,14 +93,14 @@ export default defineConfig({
     viewport: {
       width: 1920,
       height: 1080
-    },
+    }, 
 
     launchOptions: {
       args: [
         '--window-size=1080,1920',
         '--window-position=-5,-5',
         '--start-maximized',
-        `-user-data-dir=${resolve('./dir')}`,
+        // `--user-data-dir=${resolve('./dir')}`,
         // '--disable-extensions',
         // '--incognito',
         // '--disable-gpu',
@@ -114,7 +113,7 @@ export default defineConfig({
         // '--disable-features=ClickToCall,PasswordExport,PasswordImport,GooglePasswordManager,FileSystemApi,SafetyTipUI,SaveCardMigration',
         // '--disable-software-draw-without-gpu'
       ],
-      downloadsPath: './downloads',
+      downloadsPath: resolve('./downloads'),
       slowMo: 100,
       timeout: 30 * 1000,
       // executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
@@ -144,10 +143,10 @@ export default defineConfig({
       },
       strictSelectors: false,
       timezoneId: 'America/New_York',
-
+      
       geolocation: {
-        latitude: 40.367474,
-        longitude: -82.996216
+      latitude: 40.367474,
+      longitude: -82.996216
       }
     },
 
@@ -178,6 +177,7 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   // projects: [
+
   //   {
   //     name: 'setup',
   //     testMatch: /set-up.spec\.ts/,
@@ -185,8 +185,8 @@ export default defineConfig({
   //   {
   //     name: 'logged in chromium',
   //     use: {
-  //       ...devices['Desktop Chrome'],
-  //       storageState: STORAGE_STATE
+  //     ...devices['Desktop Chrome'],
+  //     storageState: STORAGE_STATE
   //     },
   //     dependencies: ['setup'],
   //     testMatch: '**/*.loggedin.spec.ts',
@@ -198,20 +198,20 @@ export default defineConfig({
   //     testIgnore: ['**/*loggedin.spec.ts']
   //   },
 
-    //   {
-    //     name: 'chromium',
-    //     use: { ...devices['Desktop Chrome'] },
-    //   },
+  //   {
+  //     name: 'chromium',
+  //     use: { ...devices['Desktop Chrome'] },
+  //   },
 
-    //   {
-    //     name: 'firefox',
-    //     use: { ...devices['Desktop Firefox'] },
-    //   },
+  //   {
+  //     name: 'firefox',
+  //     use: { ...devices['Desktop Firefox'] },
+  //   },
 
-    //   {
-    //     name: 'webkit',
-    //     use: { ...devices['Desktop Safari'] },
-    //   },
+  //   {
+  //     name: 'webkit',
+  //     use: { ...devices['Desktop Safari'] },
+  //   },
 
     /* Test against mobile viewports. */
     // {
