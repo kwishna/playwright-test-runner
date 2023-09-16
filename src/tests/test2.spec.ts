@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import {SettingsPage} from "../pages/settings-page"
 
 test.beforeEach(async ({ settingsPage }) => {
-  await settingsPage.switchToDarkMode();
+await settingsPage.switchToDarkMode();
 });
 s
 test.describe('Test Suite', () => {

@@ -3,11 +3,11 @@ import fs from "fs";
 import {resolve, extname} from "path";
 
 export const replaceNonSpecialCharacters = (value: string, replaceValue: string): string => {
-    return value?.replaceAll(/\w+/g, replaceValue)?.trim();
+    return value?.replace(/\w+/g, replaceValue)?.trim();
 }
 
 export const getDigits = (value: string, replaceValue: string): string => {
-    return value?.replaceAll(/\D+/g, replaceValue)?.trim();
+    return value?.toString().replace(/\D+/g, replaceValue)?.trim();
 }
 
 export const timestamp = (format: string = 'DD_MM_YYYY_HH_mm_ss_SSS', log: boolean = true): string => {

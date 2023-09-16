@@ -19,10 +19,9 @@ export default defineConfig({
     max: 5,
     threshold: 300
   },
-
   preserveOutput: "always",
   // Look for test files in the "tests" directory, relative to this configuration file.̥
-  testDir: './tests',
+  testDir: './src/tests',
   testIgnore: '**\/test-assets/**',
   testMatch: `**\/*.@(spec|test).?(c|m)[jt]s?(x)`,
 
@@ -43,6 +42,14 @@ export default defineConfig({
     ['dot'],
     ['line', { printSteps: true }],
     ['list'],
+    // [
+    //   "allure-playwright",
+    //   {
+    //     detail: true,
+    //     outputFolder: "my-allure-results",
+    //     suiteTitle: false,
+    //   },
+    // ],
     ['html', { outputFile: 'report.html', outputFolder: './test-results', open: false }],
     ['junit', { outputFile: 'junit.xml', outputFolder: './test-results' }],
     ['json', { outputFile: 'test-results.json', outputFolder: './test-results' }]
@@ -62,24 +69,24 @@ export default defineConfig({
     browserName: 'chromium',
     channel: "chrome",
     baseURL: 'https://google.co.in/',
-    
+
     actionTimeout: 30 * 1000,
     navigationTimeout: 30 * 10000,
     bypassCSP: false,
     javaScriptEnabled: true,
     headless: false,
     permissions: ['geolocation'],
-      // 'downloads',
-      // 'geolocation',
-      // 'history',
-      // 'management',
-      // 'notifications',
-      // 'background',
-      // 'bookmarks',
-      // 'clipboardRead',
-      // 'clipboardWrite',
-      // 'storage',
-      // 'tabs'
+    // 'downloads',
+    // 'geolocation',
+    // 'history',
+    // 'management',
+    // 'notifications',
+    // 'background',
+    // 'bookmarks',
+    // 'clipboardRead',
+    // 'clipboardWrite',
+    // 'storage',
+    // 'tabs'
     screenshot: 'only-on-failure',
     video: "retain-on-failure",
     trace: 'retain-on-failure',
@@ -87,7 +94,7 @@ export default defineConfig({
     viewport: {
       width: 1920,
       height: 1080
-    }, 
+    },
 
     launchOptions: {
       args: [
@@ -137,7 +144,7 @@ export default defineConfig({
       },
       strictSelectors: false,
       timezoneId: 'America/New_York',
-      
+
       geolocation: {
         latitude: 40.367474,
         longitude: -82.996216
@@ -170,42 +177,41 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
-
-    {
-      name: 'setup',
-      testMatch: /set-up.spec\.ts/,
-    },
-    {
-      name: 'logged in chromium',
-      use: {
-      ...devices['Desktop Chrome'],
-      storageState: STORAGE_STATE
-      },
-      dependencies: ['setup'],
-      testMatch: '**/*.loggedin.spec.ts',
-      retries: 1
-    },
-    {
-      name: 'logged out chromium',
-      use: { ...devices['Desktop Chrome'] },
-      testIgnore: ['**/*loggedin.spec.ts']
-    },
-
+  // projects: [
   //   {
-  //     name: 'chromium',
+  //     name: 'setup',
+  //     testMatch: /set-up.spec\.ts/,
+  //   },
+  //   {
+  //     name: 'logged in chromium',
+  //     use: {
+  //       ...devices['Desktop Chrome'],
+  //       storageState: STORAGE_STATE
+  //     },
+  //     dependencies: ['setup'],
+  //     testMatch: '**/*.loggedin.spec.ts',
+  //     retries: 1
+  //   },
+  //   {
+  //     name: 'logged out chromium',
   //     use: { ...devices['Desktop Chrome'] },
+  //     testIgnore: ['**/*loggedin.spec.ts']
   //   },
 
-  //   {
-  //     name: 'firefox',
-  //     use: { ...devices['Desktop Firefox'] },
-  //   },
+    //   {
+    //     name: 'chromium',
+    //     use: { ...devices['Desktop Chrome'] },
+    //   },
 
-  //   {
-  //     name: 'webkit',
-  //     use: { ...devices['Desktop Safari'] },
-  //   },
+    //   {
+    //     name: 'firefox',
+    //     use: { ...devices['Desktop Firefox'] },
+    //   },
+
+    //   {
+    //     name: 'webkit',
+    //     use: { ...devices['Desktop Safari'] },
+    //   },
 
     /* Test against mobile viewports. */
     // {
@@ -226,7 +232,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  // ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {
