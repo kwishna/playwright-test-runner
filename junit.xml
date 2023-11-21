@@ -1,44 +1,8 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="17.250563999999997">
-<testsuite name="set-up.spec.ts" timestamp="2023-09-16T03:04:46.061Z" hostname="logged out chromium" tests="1" failures="1" skipped="0" time="13.597" errors="0">
-<testcase name="do login" classname="set-up.spec.ts" time="13.597">
-<failure message="set-up.spec.ts:4:6 do login" type="FAILURE">
-<![CDATA[  [logged out chromium] › set-up.spec.ts:4:6 › do login ────────────────────────────────────────────
-
-    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
-    =========================== logs ===========================
-    navigating to "https://google.co.in/", waiting until "load"
-    ============================================================
-
-      3 |
-      4 | setup('do login', async ({ page }) => {
-    > 5 |   await page.goto('/');
-        |              ^
-      6 |   await page.getByLabel('User Name').fill('user');
-      7 |   await page.getByLabel('Password').fill('password');
-      8 |   await page.getByText('Sign in').click();
-
-        at f:\ABD\Codes\VSCodes\Automations\PlayWright\playwright-test-runner\src\tests\set-up.spec.ts:5:14
-
-    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
-    output\set-up-do-login-logged-out-chromium\video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    output\set-up-do-login-logged-out-chromium\trace.zip
-    Usage:
-
-        npx playwright show-trace output\set-up-do-login-logged-out-chromium\trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\output\set-up-do-login-logged-out-chromium\video.webm]]
-
-[[ATTACHMENT|..\..\output\set-up-do-login-logged-out-chromium\trace.zip]]
-]]>
-</system-out>
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="31.396035">
+<testsuite name="independent.spec.ts" timestamp="2023-09-16T03:19:09.263Z" hostname="Automated Playwright Tests" tests="2" failures="0" skipped="0" time="10.228" errors="0">
+<testcase name="runs first" classname="independent.spec.ts" time="8.85">
+</testcase>
+<testcase name="runs second" classname="independent.spec.ts" time="1.378">
 </testcase>
 </testsuite>
 </testsuites>

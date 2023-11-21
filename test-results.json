@@ -12,12 +12,12 @@
     "maxFailures": 0,
     "metadata": {
       "browserName": "chrome",
-      "time": "16/09/2023 08:34:45",
+      "time": "16/09/2023 08:49:09",
       "machine": "x86_64",
       "platform": "win32",
       "arch": "x64",
       "actualWorkers": 1,
-      "totalTime": 16960.647
+      "totalTime": 31296.159
     },
     "preserveOutput": "always",
     "reporter": [
@@ -70,66 +70,18 @@
         "retries": 0,
         "metadata": {
           "browserName": "chrome",
-          "time": "16/09/2023 08:34:45",
+          "time": "16/09/2023 08:49:09",
           "machine": "x86_64",
           "platform": "win32",
           "arch": "x64",
           "actualWorkers": 1,
-          "totalTime": 16960.647
+          "totalTime": 31296.159
         },
-        "id": "setup",
-        "name": "setup",
+        "id": "Automated Playwright Tests",
+        "name": "Automated Playwright Tests",
         "testDir": "f:/ABD/Codes/VSCodes/Automations/PlayWright/playwright-test-runner/src/tests",
         "testIgnore": [
           "**/test-assets/**"
-        ],
-        "testMatch": [
-          "/set-up.spec\\.ts/"
-        ],
-        "timeout": 30000
-      },
-      {
-        "outputDir": "f:/ABD/Codes/VSCodes/Automations/PlayWright/playwright-test-runner/output",
-        "repeatEach": 1,
-        "retries": 0,
-        "metadata": {
-          "browserName": "chrome",
-          "time": "16/09/2023 08:34:45",
-          "machine": "x86_64",
-          "platform": "win32",
-          "arch": "x64",
-          "actualWorkers": 1,
-          "totalTime": 16960.647
-        },
-        "id": "logged in chromium",
-        "name": "logged in chromium",
-        "testDir": "f:/ABD/Codes/VSCodes/Automations/PlayWright/playwright-test-runner/src/tests",
-        "testIgnore": [
-          "**/test-assets/**"
-        ],
-        "testMatch": [
-          "**/*.loggedin.spec.ts"
-        ],
-        "timeout": 30000
-      },
-      {
-        "outputDir": "f:/ABD/Codes/VSCodes/Automations/PlayWright/playwright-test-runner/output",
-        "repeatEach": 1,
-        "retries": 0,
-        "metadata": {
-          "browserName": "chrome",
-          "time": "16/09/2023 08:34:45",
-          "machine": "x86_64",
-          "platform": "win32",
-          "arch": "x64",
-          "actualWorkers": 1,
-          "totalTime": 16960.647
-        },
-        "id": "logged out chromium",
-        "name": "logged out chromium",
-        "testDir": "f:/ABD/Codes/VSCodes/Automations/PlayWright/playwright-test-runner/src/tests",
-        "testIgnore": [
-          "**/*loggedin.spec.ts"
         ],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -145,77 +97,74 @@
   },
   "suites": [
     {
-      "title": "set-up.spec.ts",
-      "file": "set-up.spec.ts",
+      "title": "independent.spec.ts",
+      "file": "independent.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "do login",
-          "ok": false,
+          "title": "runs first",
+          "ok": true,
           "tags": [],
           "tests": [
             {
               "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
-              "projectId": "logged out chromium",
-              "projectName": "logged out chromium",
+              "projectId": "Automated Playwright Tests",
+              "projectName": "Automated Playwright Tests",
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "failed",
-                  "duration": 13597,
-                  "error": {
-                    "message": "page.goto: net::ERR_ABORTED; maybe frame was detached?\n=========================== logs ===========================\nnavigating to \"https://google.co.in/\", waiting until \"load\"\n============================================================",
-                    "stack": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\n=========================== logs ===========================\nnavigating to \"https://google.co.in/\", waiting until \"load\"\n============================================================\n    at f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\src\\tests\\set-up.spec.ts:5:14",
-                    "location": {
-                      "file": "f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\src\\tests\\set-up.spec.ts",
-                      "column": 14,
-                      "line": 5
-                    },
-                    "snippet": "  3 |\n  4 | setup('do login', async ({ page }) => {\n> 5 |   await page.goto('/');\n    |              ^\n  6 |   await page.getByLabel('User Name').fill('user');\n  7 |   await page.getByLabel('Password').fill('password');\n  8 |   await page.getByText('Sign in').click();"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\src\\tests\\set-up.spec.ts",
-                        "column": 14,
-                        "line": 5
-                      },
-                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\n=========================== logs ===========================\nnavigating to \"https://google.co.in/\", waiting until \"load\"\n============================================================\n\n  3 |\n  4 | setup('do login', async ({ page }) => {\n> 5 |   await page.goto('/');\n    |              ^\n  6 |   await page.getByLabel('User Name').fill('user');\n  7 |   await page.getByLabel('Password').fill('password');\n  8 |   await page.getByText('Sign in').click();\n\n\u001b[2m    at f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\src\\tests\\set-up.spec.ts:5:14\u001b[22m"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 8850,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-09-16T03:04:47.690Z",
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\output\\set-up-do-login-logged-out-chromium\\video.webm"
-                    },
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\output\\set-up-do-login-logged-out-chromium\\trace.zip"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\src\\tests\\set-up.spec.ts",
-                    "column": 14,
-                    "line": 5
-                  }
+                  "startTime": "2023-09-16T03:19:10.544Z",
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
-          "id": "5c11902b8c567dafbe4b-2a1d12dc5485a61da1a7",
-          "file": "set-up.spec.ts",
-          "line": 4,
-          "column": 6
+          "id": "82f714dc92b415937ba4-4fb7319d872b3ce73903",
+          "file": "independent.spec.ts",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "runs second",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Automated Playwright Tests",
+              "projectName": "Automated Playwright Tests",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1378,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-09-16T03:19:24.504Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82f714dc92b415937ba4-75af055a6cd8601265a2",
+          "file": "independent.spec.ts",
+          "line": 16,
+          "column": 5
         }
       ]
     }
