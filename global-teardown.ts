@@ -1,4 +1,4 @@
-const { promisify } = require("util");
+import { promisify } from "util";
 const sleep = promisify(setTimeout);
 
 async function tearDown() {
