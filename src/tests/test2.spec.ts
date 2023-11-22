@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
-import {SettingsPage} from "../pages/settings-page"
+import { SettingsPage } from "../pages/settings-page"
 
 test.beforeEach(async ({ settingsPage }) => {
 await settingsPage.switchToDarkMode();
 });
-s
+
 test.describe('Test Suite', () => {
 
   test.beforeEach(async ({ context }) => {
@@ -31,7 +31,7 @@ test.describe('Test Suite', () => {
     if (testInfo.retry > 0) console.log(`Retrying!`);
 
     expect.soft(page.locator(""), "not visible").toBeVisible();
-    expect.poll(() => page.locator("ss").textContent(), {intervals: [500], timeout: 3000}).toBe("Hi");
+    expect.poll(() => page.locator("ss").textContent(), { intervals: [500], timeout: 3000 }).toBe("Hi");
 
   });
 

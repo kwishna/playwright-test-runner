@@ -1,0 +1,173 @@
+{
+  "config": {
+    "configFile": "f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\playwright.config.ts",
+    "rootDir": "f:/ABD/Codes/VSCodes/Automations/PlayWright/playwright-test-runner/src/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\global-setup.ts",
+    "globalTeardown": "f:\\ABD\\Codes\\VSCodes\\Automations\\PlayWright\\playwright-test-runner\\global-teardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "browserName": "chrome",
+      "time": "16/09/2023 08:49:09",
+      "machine": "x86_64",
+      "platform": "win32",
+      "arch": "x64",
+      "actualWorkers": 1,
+      "totalTime": 31296.159
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "dot",
+        null
+      ],
+      [
+        "line",
+        {
+          "printSteps": true
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFile": "report.html",
+          "outputFolder": "./test-results",
+          "open": false
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "junit.xml",
+          "outputFolder": "./test-results"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json",
+          "outputFolder": "./test-results"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "f:/ABD/Codes/VSCodes/Automations/PlayWright/playwright-test-runner/output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "browserName": "chrome",
+          "time": "16/09/2023 08:49:09",
+          "machine": "x86_64",
+          "platform": "win32",
+          "arch": "x64",
+          "actualWorkers": 1,
+          "totalTime": 31296.159
+        },
+        "id": "Automated Playwright Tests",
+        "name": "Automated Playwright Tests",
+        "testDir": "f:/ABD/Codes/VSCodes/Automations/PlayWright/playwright-test-runner/src/tests",
+        "testIgnore": [
+          "**/test-assets/**"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.37.1",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "independent.spec.ts",
+      "file": "independent.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "runs first",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Automated Playwright Tests",
+              "projectName": "Automated Playwright Tests",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 8850,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-09-16T03:19:10.544Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82f714dc92b415937ba4-4fb7319d872b3ce73903",
+          "file": "independent.spec.ts",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "runs second",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Automated Playwright Tests",
+              "projectName": "Automated Playwright Tests",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1378,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-09-16T03:19:24.504Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82f714dc92b415937ba4-75af055a6cd8601265a2",
+          "file": "independent.spec.ts",
+          "line": 16,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

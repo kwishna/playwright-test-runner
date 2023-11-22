@@ -25,13 +25,15 @@
   "author": "Krishna Kumar Singh",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.37.1"
+    "@playwright/test": "^1.40.0"
   },
   "dependencies": {
     "@types/node": "^20.5.9",
     "@types/superagent": "^4.1.18",
     "@zerostep/playwright": "^0.1.1",
+    "allure-playwright": "^2.8.0",
     "cross-env": "^7.0.3",
+    "csv-parse": "^5.5.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.49.0",
     "log4js": "^6.9.1",

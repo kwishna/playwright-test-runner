@@ -144,10 +144,10 @@ export default defineConfig({
       strictSelectors: false,
       timezoneId: 'America/New_York',
       
-      // geolocation: {
-      //   latitude: 40.367474,
-      //   longitude: -82.996216
-      // }
+      geolocation: {
+      latitude: 40.367474,
+      longitude: -82.996216
+      }
     },
 
     // connectOptions: {

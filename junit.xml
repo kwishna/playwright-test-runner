@@ -1,0 +1,8 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="31.396035">
+<testsuite name="independent.spec.ts" timestamp="2023-09-16T03:19:09.263Z" hostname="Automated Playwright Tests" tests="2" failures="0" skipped="0" time="10.228" errors="0">
+<testcase name="runs first" classname="independent.spec.ts" time="8.85">
+</testcase>
+<testcase name="runs second" classname="independent.spec.ts" time="1.378">
+</testcase>
+</testsuite>
+</testsuites>
