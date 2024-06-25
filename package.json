@@ -12,6 +12,7 @@
     "test:file": "playwright test my.spec.ts",
     "test:grep": "playwright test --grep \"login\"",
     "test:project": "playwright test --project \"chromium\"",
+    "test:folder": "npx playwright test tests/todo-page/ tests/landing-page/",
     "test:workers": "playwright test --workers 4",
     "test:list": "playwright test --list",
     "test:ui": "playwright test --ui",
