@@ -23,10 +23,44 @@ type MyFixtures = {
 
 // Extend base test by providing "todoPage" and "settingsPage".
 // This new "test" can be used in multiple test files, and each of them will get the fixtures.
-export const test = base.extend<MyFixtures, {
+export const fixturized = base.extend<MyFixtures, {
   workerFixture: string,
   autoWorkerFixture: string,
 }>({
+
+    /*
+    use{
+      // Base URL to use in actions like `await page.goto('/')`. *\/
+      baseURL: 'http://localhost:3000',
+    }
+  //   */
+  // page: async ({ baseURL, page }, use) => {
+  //   await page.goto(baseURL ?? "https://google.co.in/");
+  //   await use(page);
+  // },
+
+  // storageState: async ({}, use) => {
+  //   const cookie = await getAuthCookie();
+  //   await use({ cookies: [cookie] });
+  // },
+
+  // saveLogs: [async ({}, use, testInfo) => {
+  //   // Collecting logs during the test.
+  //   const logs = [];
+  //   debug.log = (...args) => logs.push(args.map(String).join(''));
+  //   debug.enable('myserver');
+
+  //   await use();
+
+  //   // After the test we can check whether the test passed or failed.
+  //   if (testInfo.status !== testInfo.expectedStatus) {
+  //     // outputPath() API guarantees a unique file name.
+  //     const logFile = testInfo.outputPath('logs.txt');
+  //     await fs.promises.writeFile(logFile, logs.join('\n'), 'utf8');
+  //     testInfo.attachments.push({ name: 'logs', contentType: 'text/plain', path: logFile });
+  //   }
+  // }, { auto: true }],
+
   todoPage: async ({ page }, use, testInfo) => {
     const logs = [];
     // Set up the fixture.
@@ -54,6 +88,8 @@ export const test = base.extend<MyFixtures, {
     await use(new SettingsPage(page));
   },
 
+  // By default, fixture shares timeout with the test. However, for slow fixtures, especially worker-scoped ones,
+  // it is convenient to have a separate timeout. This way you can keep the overall test timeout small, and give the slow fixture more time.
   slowFixture: [async ({}, use) => {
     // ... perform a slow operation ...
     await use('hello');
@@ -73,4 +109,5 @@ export const test = base.extend<MyFixtures, {
 
   person: ['John', { option: true }],
 });
-export { expect } from '@playwright/test';
+
+export const test = fixturized;
