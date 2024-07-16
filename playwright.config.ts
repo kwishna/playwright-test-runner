@@ -50,6 +50,7 @@ export default defineConfig({
     //     suiteTitle: false,
     //   },
     // ],
+    // ['allure-playwright'],
     ['html', { outputFile: 'report.html', outputFolder: './test-results', open: false }],
     ['junit', { outputFile: 'junit.xml', outputFolder: './test-results' }],
     ['json', { outputFile: 'test-results.json', outputFolder: './test-results' }]
@@ -65,6 +66,25 @@ export default defineConfig({
       maxDiffPixels: 10,
     },
   },
+
+  // API config
+  // use: {
+  //   // All requests we send go to this API endpoint.
+  //   baseURL: 'https://api.github.com',
+  //   extraHTTPHeaders: {
+  //     // We set this header per GitHub guidelines.
+  //     'Accept': 'application/vnd.github.v3+json',
+  //     // Add authorization token to all requests.
+  //     // Assuming personal access token available in the environment.
+  //     'Authorization': `token ${process.env.API_TOKEN}`,
+  //   },
+  // proxy: {
+  //   server: 'http://my-proxy:8080',
+  //   username: 'user',
+  //   password: 'secret'
+  // },
+  // }
+
   use: {
     browserName: 'chromium',
     channel: "chrome",
@@ -150,6 +170,7 @@ export default defineConfig({
       }
     },
 
+    // For cloud browsers. Like BrowserStack, LambdaTest, TestingBot, SauceLabs, etc.
     // connectOptions: {
     //   wsEndpoint: `wss://cdp.browserstack.com/playwright?caps=${encodeURIComponent(JSON.stringify({
     //     osVersion: "13.0",
